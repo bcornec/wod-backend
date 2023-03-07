@@ -29,7 +29,7 @@ usage() {
     echo "user      is the name of the admin user for the WoD project"
     echo "          example: mywodadmin "
     echo "          if empty using wodadmin               "
-    echo "-k        if used, force the re-creation of ssh keys for the previously created admin user"
+    echo "-k        is used, force the re-creation of ssh keys for the previously created admin user"
     echo "          if not used keep the existing keys in place if any (backed up and restored)"
     echo "          if the name of the admin user is changed, new keys are created"
     echo "sender    is the e-mail address used in the WoD frontend to send API procmail mails to the WoD backend"
@@ -202,28 +202,28 @@ if grep -qE "^$WODUSER:" /etc/passwd; then
     if ps auxww | grep -qE "^$WODUSER:"; then
         pkill -u $WODUSER
     fi
-	WODHDIR=`grep -E "^$WODUSER" /etc/passwd | cut -d: -f6`
-	echo "$WODUSER home directory: $WODHDIR"
-	echo "Original SSH keys"
+    WODHDIR=`grep -E "^$WODUSER" /etc/passwd | cut -d: -f6`
+    echo "$WODUSER home directory: $WODHDIR"
+    echo "Original SSH keys"
     ls -al $WODHDIR/.ssh/
     mkdir -p $WODTMPDIR
     chmod 700 $WODTMPDIR
     if [ $WODGENKEYS -eq 0 ] && [ -f $WODHDIR/.ssh/id_rsa ]; then
-		echo "Copying existing SSH keys for $WODUSER in $WODTMPDIR"
+        echo "Copying existing SSH keys for $WODUSER in $WODTMPDIR"
         cp -a $WODHDIR/.ssh/[a-z]* $WODTMPDIR
     fi
     chown -R $WODUSER $WODTMPDIR
     userdel -f -r $WODUSER
 
-	# If we do not have to regenerate keys
-	if [ $WODGENKEYS -eq 0 ]; then
-		echo "Preserved SSH keys"
-		ls -al $WODTMPDIR
-	else
-		echo "Generating ssh keys for pre-existing $WODUSER"
-	fi
+    # If we do not have to regenerate keys
+    if [ $WODGENKEYS -eq 0 ]; then
+        echo "Preserved SSH keys"
+        ls -al $WODTMPDIR
+    else
+        echo "Generating ssh keys for pre-existing $WODUSER"
+    fi
 else
-	echo "Generating ssh keys for non-pre-existing $WODUSER"
+    echo "Generating ssh keys for non-pre-existing $WODUSER"
 fi
 useradd -U -m -s /bin/bash $WODUSER
 
