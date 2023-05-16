@@ -379,7 +379,7 @@
     - name: Ensure all required pip packages are installed
       pip:
         name:
-        - jupyterhub
+        - jupyterhub=3.1.1
         - jupyterlab
         - jupyterhub-idle-culler
         - ansible-kernel>=0.9.0
