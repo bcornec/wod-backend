@@ -42,6 +42,8 @@ export WODUSER=$WODUSER
 # Name of the wod machine type (backend, api-db, frontend, appliance)
 export WODTYPE=$WODTYPE
 
+# Location of the backend directory
+export WODBEDIR=$WODBEDIR
 
 EOF
 cat >> $SCRIPTDIR/wod.sh << 'EOF'
