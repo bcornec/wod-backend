@@ -91,3 +91,14 @@ if [ -x "{{ SCRIPTPRIVDIR }}/setup-$w.sh" ]; then
 	ssh $RTARGET rm -rf $TMPDIR
 	echo "End of Appliance setup for private Workshop $w at `date`"
 fi
+
+if [ -x "{{ SCRIPTDIR }}/setup-post-$w.sh" ]; then
+	echo "Setup Appliance for Workshop $w by executing {{ SCRIPTDIR }}/setup-post-$w.sh at `date`"
+	{{ SCRIPTDIR }}/setup-post-$w.sh
+	echo "End of Appliance post setup for Workshop $w at `date`"
+fi
+if [ -x "{{ SCRIPTPRIVDIR }}/setup-post-$w.sh" ]; then
+	echo "Setup Appliance for private Workshop $w by executing {{ SCRIPTPRIVDIR }}/setup-post-$w.sh at `date`"
+	{{ SCRIPTPRIVDIR }}/setup-post-$w.sh
+	echo "End of Appliance post setup for Workshop $w at `date`"
+fi
