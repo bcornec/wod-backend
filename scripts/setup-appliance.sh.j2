@@ -88,7 +88,8 @@ if [ -x "{{ SCRIPTDIR }}/setup-$w.sh" ]; then
 	TMPDIR=/tmp/sa.$$
 	ssh $RTARGET mkdir -p $TMPDIR
 	scp {{ SCRIPTDIR }}/setup-$w.sh $RTARGET:$TMPDIR/
-	ssh $RTARGET "$TMPDIR/setup-$w.sh"
+	# We have to pass the Workshop name to have it remotely as well as the $w variable
+	ssh $RTARGET "$TMPDIR/setup-$w.sh $w"
 	ssh $RTARGET rm -rf $TMPDIR
 	echo "End of Appliance setup for Workshop $w at `date`"
 fi
