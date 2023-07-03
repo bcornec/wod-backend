@@ -99,7 +99,7 @@ if [ -x "{{ SCRIPTPRIVDIR }}/setup-$w.sh" ]; then
 	TMPDIR=/tmp/sa.$$
 	ssh $RTARGET mkdir -p $TMPDIR
 	scp {{ SCRIPTPRIVDIR }}/setup-$w.sh $RTARGET:$TMPDIR/
-	ssh $RTARGET "$TMPDIR/setup-$w.sh"
+	ssh $RTARGET "$TMPDIR/setup-$w.sh $w"
 	ssh $RTARGET rm -rf $TMPDIR
 	echo "End of Appliance setup for private Workshop $w at `date`"
 fi
