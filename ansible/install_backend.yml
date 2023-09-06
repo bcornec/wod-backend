@@ -559,8 +559,8 @@
     - name: Ensure jupyterhub IJava kernel is installed
       shell: . '{{ JPHUB }}/bin/activate' && cd {{ ansible_env.HOME }} && python3 install.py --prefix={{ JPHUB }}
 
-    - name: Ensure jupyterhub docx bundle is installed
-      shell: . '{{ JPHUB }}/bin/activate' && cd {{ ansible_env.HOME }} && jupyter bundlerextension enable --py jupyter_docx_bundler --sys-prefix
+    #- name: Ensure jupyterhub docx bundle is installed
+    #  shell: . '{{ JPHUB }}/bin/activate' && cd {{ ansible_env.HOME }} && jupyter bundlerextension enable --py jupyter_docx_bundler --sys-prefix
 
     - name: Ensure jupyterhub ssh kernel is installed
       shell: . '{{ JPHUB }}/bin/activate' && python3 -m sshkernel install --sys-prefix
