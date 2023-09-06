@@ -259,7 +259,7 @@
         - aspnetcore-runtime-7.0
         - dotnet-runtime-7.0
         - dotnet-sdk-7.0
-        - dotnet-host
+        - dotnet-host-7.0
         - postfix
         - procmail
         - conda
