@@ -1,8 +1,0 @@
----
-
-- name: Setup Playbook for WKSHP-Dataspaces appliance
-  hosts: '{{ RTARGET }}'
-  tasks:
-    - name: Setup docker based appliance
-      include_tasks: "{{ ANSIBLEDIR }}/setup_docker_based_appliance.yml"
-

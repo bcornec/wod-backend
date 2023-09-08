@@ -1,0 +1,7 @@
+---
+
+- name: Setup Playbook for WKSHP-Podman101 appliance
+  hosts: '{{ RTARGET }}'
+  tasks:
+    - name: Setup a Docker based appliance
+      include_tasks: "{{ ANSIBLEDIR }}/setup_podman_based_appliance.yml"
