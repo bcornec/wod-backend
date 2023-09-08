@@ -8,10 +8,10 @@ export RTARGET={{ hostvars[inventory_hostname]['IP-WKSHP-Podman101'] }}
 NAME=podmanlab
 
 # Stop/Remove existing content first - these commands could fail so protect with true from set -e
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'docker stop $NAME${stdid}_$NAME${stdid}_1\' && /bin/true
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'docker rm $NAME${stdid}_$NAME${stdid}_1\' && /bin/true
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'docker container prune -f\' && /bin/true
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'docker image prune -f\' && /bin/true
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'docker rmi $NAME$stdid\' && /bin/true
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'docker network prune -f\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman stop $NAME${stdid}_$NAME${stdid}_1\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rm $NAME${stdid}_$NAME${stdid}_1\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman container prune -f\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman image prune -f\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rmi $NAME$stdid\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman network prune -f\' && /bin/true
 exit 0
