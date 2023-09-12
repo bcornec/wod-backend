@@ -20,7 +20,7 @@ echo wid=$wid
 APPMIN=`get_range_min $wid`
 echo stdid=$stdid
 echo APPMIN=$APPMIN
-sshport=$(($stdid-$APPMIN+{{ hostvars[inventory_hostname]['SSHPORT-WKSHP-Podman101'] }}))
+sshport={{ hostvars[inventory_hostname]['SSHPORT-WKSHP-Podman101'] }}
 httpport=$(($stdid-$APPMIN+{{ hostvars[inventory_hostname]['HTTPPORT-WKSHP-Podman101'] }}))
 
 
