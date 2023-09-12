@@ -8,16 +8,17 @@
       name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
       state: present
     when:
-      - ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux"
+      - ansible_distribution == "CentOS" 
 
-  - name: Ensure EPEL repo is available
+  - name: Add EPEL repository into repo list
     become: yes
     become_user: root
-    package:
-      pkg:
-      - epel-release
+    yum:
+      name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+      disable_gpg_check: true
+      state: present
     when:
-      - ansible_distribution == "Rocky" or ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux"
+      - ansible_distribution == "RedHat"
 
 
   - name: Disable Podman service
