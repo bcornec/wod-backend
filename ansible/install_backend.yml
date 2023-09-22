@@ -39,8 +39,8 @@
         url: https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
         state: present
       when:
-       - ansible_distribution == "Ubuntu"
-       - ansible_distribution_major_version >= "20"
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_major_version >= "20"
 
       # TODO: Do it for EPEL if really needed
     - name: Add conda APT repository
@@ -50,8 +50,8 @@
         repo: deb [arch=amd64] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main
         state: present
       when:
-       - ansible_distribution == "Ubuntu"
-       - ansible_distribution_major_version >= "20"
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_major_version >= "20"
 
     - name: Add Hashicorp GPG Key to APT
       become: yes
@@ -60,8 +60,8 @@
         url: https://apt.releases.hashicorp.com/gpg
         state: present
       when:
-       - ansible_distribution == "Ubuntu"
-       - ansible_distribution_major_version >= "20"
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_major_version >= "20"
 
     - name: Add Hashicorp APT repository
       become: yes
@@ -70,8 +70,8 @@
         repo: deb [arch=amd64] https://apt.releases.hashicorp.com focal main
         state: present
       when:
-       - ansible_distribution == "Ubuntu"
-       - ansible_distribution_major_version >= "20"
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_major_version >= "20"
 
     - name: Add Hashicorp GPG Key to RPM DB
       become: yes
@@ -122,8 +122,8 @@
         repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
         state: present
       when:
-       - ansible_distribution == "Ubuntu"
-       - ansible_distribution_major_version == "20"
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_major_version == "20"
 
     - name: Add Golang APT repository
       become: yes
@@ -132,8 +132,8 @@
         repo: ppa:longsleep/golang-backports
         state: present
       when:
-       - ansible_distribution == "Ubuntu"
-       - ansible_distribution_major_version <= "20"
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_major_version <= "20"
 
     - name: Add K8s YUM repository
       become: yes
@@ -179,8 +179,8 @@
       apt:
         deb: https://packages.microsoft.com/config/ubuntu/{{ ansible_distribution_version }}/packages-microsoft-prod.deb
       when:
-       - ansible_distribution == "Ubuntu"
-       - ansible_distribution_major_version >= "20"
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_major_version >= "20"
 
     - name: Setup MicroSoft repo for YUM
       become: yes
@@ -310,8 +310,8 @@
         name:
         - golang
       when:
-       - ansible_distribution == "Ubuntu"
-       - ansible_distribution_major_version > "20"
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_major_version > "20"
 
     - name: Ensure all required APT packages are installed
       become: yes
@@ -320,8 +320,8 @@
         name:
         - golang-go
       when:
-       - ansible_distribution == "Ubuntu"
-       - ansible_distribution_major_version <= "20"
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_major_version <= "20"
 
     - name: Ensure all required RPM packages are installed
       become: yes
@@ -645,6 +645,22 @@
         force: yes
       when:
         - ansible_distribution == "CentOS" or ansible_distribution == "Rocky"
+
+    - name: Fix again bad packaging from MS on dotnet sdk for v7.0 :-(
+      become: yes
+      become_user: root
+      file:
+        src: "/usr/share/dotnet/{{ item }}"
+        dest: "/usr/lib/dotnet"
+        state: link
+        force: yes
+      with_items:
+        - sdk
+        - sdk-manifests
+        - templates
+      when:
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_major_version == "22"
 
     - name: Ensure powershell is installed through dotnet
       become: yes
