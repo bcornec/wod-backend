@@ -1,5 +1,5 @@
 ---
-  - name: Setup first the Docker context (packages, deps, ...)
+  - name: Setup first the podman context (packages, deps, ...)
     include_tasks: "{{ ANSIBLEDIR }}/install_podman.yml"
 
   - name: Ensure Linux students users belong to the docker group
