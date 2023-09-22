@@ -651,7 +651,7 @@
       become_user: root
       file:
         src: "/usr/share/dotnet/{{ item }}"
-        dest: "/usr/lib/dotnet"
+        dest: "/usr/lib/dotnet/{{ item }}"
         state: link
         force: yes
       with_items:
