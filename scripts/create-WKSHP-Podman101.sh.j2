@@ -29,10 +29,6 @@ cat > $TMPDIR/config << EOF
 Host $RTARGET
     Port $sshport
 EOF
-sudo install -m 0600 -o student$stdid $TMPDIR/config {{ STUDDIR }}/student$stdid/.ssh/
-
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo cp {{ STUDDIR }}/student$stdid/.ssh/authorized_keys $TMPDIR
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo chmod 644 $TMPDIR/authorized_keys
 
 
 # ansible-vault to store it in the pass file creating a PODMANTOK ansible variable
