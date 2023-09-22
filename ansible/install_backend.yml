@@ -587,13 +587,13 @@
       failed_when: false
       changed_when: False
 
-    - name: Patch ansible kernel with fixes coming from master
-      ansible.posix.patch:
-        src: "{{ SYSDIR }}/master-vs-0.9.0.patch"
-        basedir: "{{ JPHUB }}/{{ python_lib }}/ansible_kernel"
-        strip: 2
-        backup: yes
-      when: patch_done.rc != 0
+    #- name: Patch ansible kernel with fixes coming from master
+     # ansible.posix.patch:
+      #  src: "{{ SYSDIR }}/master-vs-0.9.0.patch"
+       # basedir: "{{ JPHUB }}/{{ python_lib }}/ansible_kernel"
+        #strip: 2
+        #backup: yes
+      #when: patch_done.rc != 0
 
     - name: Remove former kernel files installed locally
       file:
