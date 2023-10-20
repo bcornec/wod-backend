@@ -188,7 +188,11 @@ get_wod_completion_ratio() {
 	total=$(grep execution_count $what/*.ipynb  | wc -l)
 	missed=$(grep execution_count $what/*.ipynb  | grep null | wc -l)
 	done=$((total-missed))
-	completion=$((done*100/total))
+	if [ $total -eq 0 ]; then
+		completion=0
+	else
+		completion=$((done*100/total))
+	fi
 	#echo "date:$when,user:$who,workshop:$what,completion:$completion%"
 	echo "$completion"
 }
