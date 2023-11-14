@@ -7,11 +7,16 @@ export RTARGET={{ hostvars[inventory_hostname]['IP-WKSHP-Podman101'] }}
 
 NAME=podmanlab
 
+cd /student/student$stdid/$w
+
+
 # Stop/Remove existing content first - these commands could fail so protect with true from set -e
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman stop $NAME${stdid}_$NAME${stdid}_1\' && /bin/true
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rm $NAME${stdid}_$NAME${stdid}_1\' && /bin/true
-#ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman container prune -f\' && /bin/true
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman image prune -f\' && /bin/true
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rmi $NAME$stdid\' && /bin/true
-#ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman network prune -f\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman stop --all\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rm --all\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rmi hello-world nginx fedora localhost/myhttpd:v1\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'rm ./Containerfile ./index.html' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rmi docker.io/redhat/ubi9 docker.io/library/nginx localhost/nginx-reverse-proxy localhost/myhttpd:v1' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'rm kubepodman.yml compose.yml Containerfile-backend Containerfile-nginx default.conf index.html nginx-index.html\' && /bin/true
 exit 0
+	~
+
