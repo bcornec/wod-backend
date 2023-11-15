@@ -11,13 +11,11 @@ cd /student/student$stdid/$w
 
 
 # Stop/Remove existing content first - these commands could fail so protect with true from set -e
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'find .. -depth -type d |xargs chmod u+w \' && /bin/true
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman stop --all\' && /bin/true
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rm --all\' && /bin/true
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rmi hello-world nginx fedora localhost/myhttpd:v1\' && /bin/true
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rmi docker.io/redhat/ubi9 docker.io/library/nginx localhost/nginx-reverse-proxy localhost/myhttpd:v1\' && /bin/true
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'rm kubepodman.yml compose.yml Containerfile Containerfile-backend Containerfile-nginx default.conf index.html nginx-index.html\' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'rm -f kubepodman.yml compose.yml Containerfile Containerfile-backend Containerfile-nginx default.conf index.html nginx-index.html\' && /bin/true
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su -  -c \'rm -rf /student/student$stdid/.local \' && /bin/true
 exit 0
-	~
 
