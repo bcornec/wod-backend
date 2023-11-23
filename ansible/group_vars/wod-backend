@@ -39,6 +39,7 @@ CONCOURSEPORT2-WKSHP-Concourse101: 19031
 IP-WKSHP-DataVisu101: x.y.z.t
 IP-WKSHP-Concourse101: x.y.z.t
 IP-WKSHP-Docker101: x.y.z.t
+IP-WKSHP-Podman101: x.y.z.t
 IP-WKSHP-Ansible101: x.y.z.t
 IP-WKSHP-Spark101: x.y.z.t
 IP-WKSHP-ML101: x.y.z.t
