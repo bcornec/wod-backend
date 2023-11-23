@@ -27,8 +27,10 @@ LDAPPORT: "389"
 # For various existing public WoDs - needed. Adapt but do not remove !
 #
 SSHPORT-WKSHP-Docker101: 14101
+SSHPORT-WKSHP-Podman101: xx
 SSHPORT-WKSHP-Ansible101: 16001
 HTTPPORT-WKSHP-Docker101: 14151
+HTTPPORT-WKSHP-Podman101: xyzz
 HTTPPORT-WKSHP-Ansible101: 16051
 HTTPPORT-WKSHP-Spark101: 17161
 HTTPPORT-WKSHP-Concourse101: 19061
