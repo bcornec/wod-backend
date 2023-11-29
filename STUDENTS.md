@@ -80,17 +80,27 @@ Last seat for speaker
 
   
 
-451-525  AI 101 CNN MNIST
+471-491  AI 101 CNN MNIST
 
-[451-470] challenges 
-
-[471-524] workshops Location :  Mougins   
+[471-490] workshops Location :  Mougins   
 
 [525] speakers SMES 
 
+
+491-525  Podman101
+
+[491-525] workshops Location :  Mougins   
+
+[525] speakers SMES   
+
+
+526-551  Podman201
+
+[526-550] workshops Location :  Mougins   
+
+[550] speakers SMES 
+
   
-
-
 526-600  Grommet 
 
 [526-545] challenges Location :  Grenoble 
@@ -99,7 +109,6 @@ Last seat for speaker
 
 [600] speakers SMES 
 
-  
 
 
 601-675 ilo-REST 
