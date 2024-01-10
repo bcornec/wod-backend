@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#set -x
+
+echo "Prepare the Podman201 APPLIANCE VM"
+
+NAME=podman201lab
+
+mkdir -p $HOME/$NAME
+cd $HOME/$NAME
+# Rename bash init script creating issue with %login in jupyter notebook
+
+sudo mv /etc/profile.d/which2.sh /etc/profile.d/which2.sh.bak
+# Clean before

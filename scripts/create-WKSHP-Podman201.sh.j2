@@ -1,0 +1,42 @@
+#!/bin/bash
+
+set -x
+
+source {{ SCRIPTDIR }}/functions.sh
+
+export RTARGET={{ hostvars[inventory_hostname]['IP-WKSHP-Podman201'] }}
+# Start by cleaning up stuff - do it early as after we setup .ssh content
+{{ SCRIPTDIR }}/reset-$ws.sh
+{{ SCRIPTDIR }}/create-appliance.sh
+
+NAME=podmanlab
+TMPDIR=/tmp/$NAME.$stdid
+
+
+mkdir -p $TMPDIR
+
+# Define local variables
+echo wid=$wid
+APPMIN=`get_range_min $wid`
+echo stdid=$stdid
+echo APPMIN=$APPMIN
+sshport={{ hostvars[inventory_hostname]['SSHPORT-WKSHP-Podman201'] }}
+httpport=$(($stdid-$APPMIN+{{ hostvars[inventory_hostname]['HTTPPORT-WKSHP-Podman201'] }}))
+
+
+# Adapt the ssh config for the student
+cat > $TMPDIR/config << EOF
+Host $RTARGET
+    Port $sshport
+EOF
+
+
+# ansible-vault to store it in the pass file creating a PODMANTOK ansible variable
+if [ ! -d "{{ ANSIBLEPRIVDIR }}/{{ PBKDIR }}/pass" ]; then
+	mkdir -p "{{ ANSIBLEPRIVDIR }}/{{ PBKDIR }}/pass"
+fi
+ansible-vault encrypt_string --vault-password-file "{{ ANSIBLEPRIVDIR }}/vault_secret" $httpport --name "'HTTPPORT'" >> "{{ ANSIBLEPRIVDIR }}/{{ PBKDIR }}/pass/variables_${w}_${stdid}.yml"
+
+# Cleanup
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo rm -rf $TMPDIR
+rm -rf $TMPDIR
