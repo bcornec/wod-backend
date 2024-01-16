@@ -378,8 +378,11 @@ Last seat for speaker
 [1825] speaker for live sessions
 
 
-1826-1850 Free
+1826-1850 GLP API
 
+[1826-1850] workshops Location : Mougins
+
+[1850] speaker for live sessions
 
 
 1851-1925 Data Fabric 201
