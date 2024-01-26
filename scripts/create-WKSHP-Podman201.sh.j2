@@ -34,7 +34,7 @@ EOF
 cd $TMPDIR
 wget --no-check-certificate https://downloads-openshift-console.apps.staging-openshiftcl.etc.fr.comm.hpecorp.net/amd64/linux/oc.tar
 cd /usr/local/bin
-sudo  tar xvf $TMPDIR/oc.tar .
+sudo  tar xvf $TMPDIR/oc.tar 
 sudo chmod 755 oc
 
 # ansible-vault to store it in the pass file creating a PODMANTOK ansible variable
