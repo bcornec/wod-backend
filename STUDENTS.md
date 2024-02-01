@@ -395,11 +395,17 @@ Last seat for speaker
 
 
 
-1926-2000 Jupyter Notebooks101
+1926-1946 Jupyter Notebooks101
 
-[1926-1940] challenges  Location :  Grenoble
+[1926-1954] workshops  Location :  Grenoble
 
-[1941-1999] workshops Location :  Mougins
+[1954] speaker for live sessions
 
-[2000] speaker for live sessions
+
+
+1955-1976 Jupyter Notebooks101
+
+[1955-1980] workshops Location :  Grenoble
+
+[1980] speaker for live sessions
 
