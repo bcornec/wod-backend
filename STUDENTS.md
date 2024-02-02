@@ -403,7 +403,7 @@ Last seat for speaker
 
 
 
-1955-1976 Jupyter Notebooks101
+1955-1976 Create your first building block for an HPE infrastructure sustainability solution using HPE OneView or HPE GreenLake for Compute Ops Management and Grafana
 
 [1955-1980] workshops Location :  Grenoble
 
