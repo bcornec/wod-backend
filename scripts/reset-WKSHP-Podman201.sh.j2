@@ -23,8 +23,9 @@ cd /student/student$stdid/
 
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc login -u student$stdid -p $randompw --insecure-skip-tls-verify https://$ocendpoint:6443' && /bin/true
 
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc delete project my-project-$stdid' && /bin/true
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc delete project declarative-$stdid' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc delete project my-project$stdid' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc delete project declarative$stdid' && /bin/true
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc delete project patient-portal-student' && /bin/true
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc delete patient-portal' && /bin/true
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'podman rm --all --force\' && /bin/true
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'systemctl --user stop frontend.service' && /bin/true
