@@ -21,7 +21,7 @@ NAME=podmanlab
 cd /student/student$stdid/
 
 
-ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc login -u student$stdid -p $randompw http://$ocendpoint:6443
+ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc login -u student$stdid -p $randompw http://$ocendpoint:6443' && /bin/true
 
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc delete project my-project-$stdid' && /bin/true
 ssh -q {{ NOCHECKSSH }} $RTARGET sudo su - student$stdid -c \'oc delete project declarative-$stdid' && /bin/true
