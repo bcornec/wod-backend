@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -x
+
+export NAME=tensorflowlab
+export TMPDIR=/tmp/$NAME.$stdid.ret
+
+{{ SCRIPTDIR }}/cleanup-container-ratio.sh
