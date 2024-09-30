@@ -94,18 +94,16 @@ Last seat for speaker
 [525] speakers SMES   
 
 
-526-551  Podman201
+526-550  Podman201
 
 [526-550] workshops Location :  Mougins   
 
 [550] speakers SMES 
 
   
-526-600  Grommet 
+551-600  Grommet 
 
-[526-545] challenges Location :  Grenoble 
-
-[546-599] workshops Location :  Mougins   
+[551-599] workshops Location :  Mougins   
 
 [600] speakers SMES 
 
@@ -159,25 +157,39 @@ Last seat for speaker
 
 846-900 HPE CP  ML OPS  
 
+
 [826-845] challenges  Location :  Grenoble 
 
 [846-899] workshops Location :  Mougins  
 
 [900] speaker for live sessions 
 
+
   
-
-
-901-975 dataspaces
+901-920 WKSHP-Grommet201
 
 [901-920] challenges  Location :  Mougins
 
-[921-974] workshops Location :  Mougins  
+[920] speaker for live sessions 
+
+
+
+921-949 TBD
+
+[921-949] challenges  Location :  Mougins
+
+[949] speaker for live sessions 
+
+
+
+
+950-975 WKSHP-Podman201
+
+[950-975] workshops Location :  Grenoble  
 
 [975] speaker for live sessions 
 
  
-
 
 976-1050 WKSHP-K8s-ML-Pipeline Building a dynamic Machine Learning pipeline with KubeDirector
 
