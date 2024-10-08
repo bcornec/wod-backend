@@ -8,7 +8,7 @@
     with_items:
       - https://download.docker.com/linux/centos/gpg
     when:
-      - ansible_distribution == "CentOS"
+      - ansible_distribution == "CentOS" or ansible_distribution == "Rocky"
 
   - name: Setup Docker repo for RPM
     become: true
@@ -20,7 +20,7 @@
       enabled: true
       state: present
     when:
-      - ansible_distribution == "CentOS"
+      - ansible_distribution == "CentOS" or ansible_distribution == "Rocky"
 
   - name: Add Docker GPG Key to APT
     become: true
