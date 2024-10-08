@@ -55,6 +55,10 @@ shift
 export stddir="{{ STUDDIR }}/student$stdid"
 export accessToken=`get_session_token`
 
+# Increment the student ID by Number of jupyterhub students in students table
+# Only for API Calls 
+dbstdid=$((stdid+{{ BASESTDID }}))
+
 # for PURGE we just need stddir and stdid
 if [ "$action" = "PURGE" ]; then
     curl --header "Authorization: token {{ WODBETOKEN }}" \
@@ -62,7 +66,13 @@ if [ "$action" = "PURGE" ]; then
             --request DELETE \
             "{{ WODBEAPIURL }}/hub/api/users/student$stdid/server"
 	generate_randompwd
+	# Unassign student
+	curl --header "x-access-token:$accessToken" --header "Content-Type: application/json" \
+					 --request PUT \
+					 --data '{"assigned":"false"}' \
+					 "$WODFEAPIURL/student/$dbstdid"
 	erase_student
+	cleanup_processes_student
     exit 0
 fi
 
@@ -176,10 +186,6 @@ if [ $action != "RESET" ]; then
 			rm -f {{ ansible_env.HOME }}/tmp/ac-student$stdid.yml {{ ANSIBLEPRIVDIR }}/{{ PBKDIR }}/pass/variables_${w}_${stdid}.yml
 		fi
 
-		# Increment the student ID by Number of jupyterhub students in students table
-		# Only for API Calls 
-		dbstdid=$((stdid+{{ BASESTDID }}))
-
 		# Instead do 2 API calls here, one for passwd change, one for status change
 		# Update Password
 		curl --header "x-access-token:$accessToken" --header "Content-Type: application/json" \
@@ -221,15 +227,15 @@ if [ $action != "RESET" ]; then
                			"$WODFEAPIURL/customer/$userid"
 
 
-			#Delete Student jupyterhub dedicated server
+			# Delete Student jupyterhub dedicated server
 			curl --header "Authorization: token {{ WODBETOKEN }}" \
 				--location \
 			--request DELETE \
                          "{{ WODBEAPIURL }}/hub/api/users/student$stdid/server"
 
-			#Get Worshop reset status to determine if users should be updated to inactive or not
+			# Get Workshop reset status to determine if users should be updated to inactive or not
 			if [ _"`get_reset_status $wid`" = _"false" ]; then
-				##Update student status to inactive
+				# Update student status to inactive
 				curl --header "x-access-token:$accessToken" --header "Content-Type: application/json" \
 					 --request PUT \
 					 --data '{"assigned":"false"}' \
