@@ -51,6 +51,7 @@
       - docker-common
       - docker
       - docker-engine
+      - docker-compose
       state: absent
 
   - name: Disable Docker service
@@ -92,7 +93,7 @@
     package:
       name:
       - docker-ce
-      - docker-compose
+      - docker-compose-plugin
       state: present
 
   - name: Enable Docker service
