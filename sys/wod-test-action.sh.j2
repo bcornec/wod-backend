@@ -99,6 +99,10 @@ if [ $? -eq 0 ]; then
 		# For RESET we can use the range directly
 		send_mail $STDRANGE
 	else
+		if [ $ACTION = "PURGE" ]; then
+			echo "Action PURGE is not available with a range of students"
+			exit -1
+		fi
 		# For other actions we need to loop
 		while [ $i -le $STDMAX ]; do
 			send_mail $i
@@ -106,5 +110,10 @@ if [ $? -eq 0 ]; then
 		done
 	fi
 else
+	# No Range
+	# As a security, PURGE needs the student before the number
+	if [ $ACTION = "PURGE" ]; then
+		STDRANGE=student"$STDRANGE"
+	fi
 	send_mail $STDRANGE
 fi
