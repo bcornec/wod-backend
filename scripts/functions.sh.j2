@@ -231,5 +231,7 @@ cleanup_processes_student() {
 	ids=`ps auxww | grep /student$stdid | grep -v grep | awk '{ print $2 }'`
 	if [ _"$ids" != _"" ]; then
 		sudo kill $ids
+		sleep 2
+		sudo kill -9 $ids
 	fi
 }
