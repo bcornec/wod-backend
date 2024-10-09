@@ -58,7 +58,7 @@ EOF
 # and http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
 # For security consider using https://github.com/nestybox/sysbox
 cat > $TMPDIR/docker-compose.yml << EOF
-version: '3.5'
+version: '2.27'
 services:
   $NAME$stdid:
     image: $NAME$stdid
