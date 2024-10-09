@@ -11,7 +11,7 @@ TMPDIR=/tmp/$NAME.$stdid
 mkdir -p $TMPDIR
 cat > $TMPDIR/stop-compose << EOF
 cd $TMPDIR
-docker-compose down
+docker compose down
 EOF
 
 chmod 755 $TMPDIR/stop-compose

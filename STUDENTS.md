@@ -78,6 +78,11 @@ Last seat for speaker
 [450] speakers SMES 
 
 
+451-470 SIC101
+
+[451-469] workshops Location : Mougins
+
+[470] speaker SME
   
 
 471-491  AI 101 CNN MNIST
