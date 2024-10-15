@@ -372,6 +372,7 @@
         - bash_kernel
         - sshkernel
         - powershell_kernel
+        - kotlin-jupyter-kernel
         - redfish
         - jupyter-docx-bundler
         - requests
